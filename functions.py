@@ -2,11 +2,9 @@ from pydicom import dcmread
 
 import ants
 import cv2
-import json
 import nibabel
 import numpy as np
 import os
-import pandas as pd
 import scipy
 
 
@@ -111,9 +109,6 @@ def reorient_image(np_image, spacing, output_prefix):
     reoriented_img = ants.reorient_image2(ants_img, orientation='RAS')
     ants.image_write(reoriented_img, f"{output_prefix}_reoriented.nii.gz")
     return reoriented_img.numpy()
-
-
-import os
 
 
 def skull_strip(nii_file, output_file=None, intensity=0.01):
